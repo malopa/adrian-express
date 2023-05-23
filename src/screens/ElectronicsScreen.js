@@ -10,6 +10,7 @@
   export default function ElectronicsScreen({route,navigation}) {
     let param = route.params;
 
+    // alert(param.slug)
     const {isLoading,data:products} = useQuery({queryKey:['products-'+param.slug], queryFn:()=>getProductByCategory(param?.slug)})
 
 

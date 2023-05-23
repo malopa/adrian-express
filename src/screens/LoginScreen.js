@@ -42,6 +42,8 @@ export default function LoginScreen({navigation}) {
         setMobile("")
         navigation.navigate("Dashboard")
       }else{
+        setDiabled(!disabled)
+
         Alert.alert("Message","Wrong username|password")
         setIsOpen(false);
 
@@ -71,7 +73,7 @@ export default function LoginScreen({navigation}) {
         <Center flex={1} bg='red' p={4}>
 
         <Box p={4}>
-        <Image width={20} rounded='full' alt='logo' height={20} source={require("../../assets/icon.png")} />  
+        <Image width={20} rounded='full' alt='logo' height={20} source={require("../../assets/logo.png")} />  
         </Box>
 
 
@@ -122,8 +124,8 @@ export default function LoginScreen({navigation}) {
             onPress={handleLogin} rounded={'full'} 
             mt={4} width='full'
               py={3}  
-              bg='amber.400' >
-                <Text fontWeight='bold'>Log In</Text>
+              bg='#020143' >
+                <Text fontWeight='bold' color='white'>Log In</Text>
               </Button>
 
               <Button w='full' 

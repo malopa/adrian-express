@@ -4,7 +4,7 @@ import React from 'react'
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import MainScreen from './MainScreen';
 import ElectronicsScreen from './ElectronicsScreen';
-import { Box, HStack, Icon, Image, Text } from 'native-base';
+import { Box, HStack, Icon, Image, Input, Pressable, Text } from 'native-base';
 import { MaterialIcons } from '@expo/vector-icons';
 import OtherScreen from './categories/OtherScreen';
 import LapcomputerScreen from './categories/LapcomputerScreen';
@@ -14,6 +14,7 @@ import FunirtureScreen from './categories/FunirtureScreen';
 import MobilePhoneScreen from './categories/MobilePhoneScreen';
 import Carspares from './categories/Carspares';
 import { useSelector } from 'react-redux';
+import { Alert } from 'react-native';
 
 const Drawer = createDrawerNavigator();
 
@@ -40,7 +41,7 @@ const user = useSelector(state=>state.user);
 }
 
 
-export default function HomeScreen() {
+export default function HomeScreen(props) {
   return (
     // <Drawer.Navigator>
     <Drawer.Navigator 
@@ -54,9 +55,16 @@ export default function HomeScreen() {
     drawerContent={(props) => <CustomDrawerContent {...props} />}>
     <Drawer.Screen name="Dashboard" 
     options={{slug:'ElectronicsScreen',headerTitle: () => (
-      <Image rounded='full' alt='' 
-      style={{ width: 50, height: 50 }} 
-      source={require("../../assets/logo.png")} />
+      <Input rounded={'full'} placeholder="Search product here" fontSize={14} width={300} 
+      borderColor='black' 
+      InputRightElement={<Pressable onPress={() => props.navigation.navigate("SearchScreen")} rounded='full' bg='black' p={2} justifyContent='center'
+      alignItems={'center'}
+      >
+            <Icon as={<MaterialIcons name={"search"} p={2} />} size={5}  mr={2} color="white" bg='black'  />
+          </Pressable>}
+      my={2}
+      
+      />
     ),headerTitleAlign:"center"}} component={MainScreen} />
       <Drawer.Screen name="Electronics" 
       component={ElectronicsScreen}

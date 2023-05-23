@@ -64,13 +64,12 @@ export default function MainApp({navigation}) {
 
       <Tab.Screen name="Video" component={VideoScreen} 
        options={{
-        tabBarLabel: 'Video',
+        tabBarLabel: 'Cart',
         tabBarIcon: ({ color }) => (
-          <FontAwesomeIcon name="video-camera" color={color} size={26} />
+          <FontAwesomeIcon name="shopping-cart" color={color} size={26} />
         ),
       }}
       />
-
       
       <Tab.Screen name="Cart" component={CartScreen} 
       options={{
@@ -117,7 +116,7 @@ export default function MainApp({navigation}) {
       <Tab.Screen name="Settings" component={SettingsScreen} 
        options={{
         headerShown:false,
-        tabBarLabel: 'Profile',
+        tabBarLabel: 'My Adrian',
         tabBarIcon: ({ color }) => (
           <MaterialCommunityIcons name="account" color={color} size={26} />
         ),

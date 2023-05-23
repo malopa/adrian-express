@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Gold",
-    "slug": "store",
+    "name": "Adrian",
+    "slug": "adrian",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/logo.png",
@@ -25,19 +25,13 @@
         "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.quicker.store",
+      "package": "com.quicker.adrian",
       "permissions": [
         "android.permission.RECORD_AUDIO"
       ]
     },
     "web": {
       "favicon": "./assets/logo.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "19af7fb1-47a3-4cdd-827d-de050f58ab85"
-      }
-          
     },
     "plugins": [
       [
@@ -46,6 +40,12 @@
           "photosPermission": "The app accesses your photos to let you share them with your friends."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "01ce4717-aea4-43d0-a0d2-3b818d124992"
+      }
+    },
+    "owner": "wazacomt"
   }
 }

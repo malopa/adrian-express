@@ -20,6 +20,8 @@ import { Box, Icon, Input, Pressable } from 'native-base';
 import { MaterialIcons } from '@expo/vector-icons';
 import ServiceProfile from '../screens/ServiceProfile';
 import ElectronicsScreen from '../screens/ElectronicsScreen';
+import SearchScreen from '../screens/SearchScreen';
+import MyOrders from '../screens/MyOrders';
 
 
 
@@ -46,12 +48,6 @@ export default function AppScreens({navigation}) {
           }})} />
 
 
-      {/* <Stack.Screen name='ChatScreen' 
-        component={ChatScreen} 
-        options={({route})=>({headerShown: true,
-          headerTitleStyle: {
-            color: 'black'
-          }})} /> */}
 
       <Stack.Screen name='ShoperScreen' 
         component={ShoperScreen} 
@@ -148,8 +144,11 @@ export default function AppScreens({navigation}) {
     <Stack.Screen name='ServiceProfile' component={ServiceProfile} options={{headerShown:true}} />
     
     <Stack.Screen name='RegisterService' component={RegisterService} options={{headerShown:true}} />
-    <Stack.Screen name='ElectronicsScreen' component={ElectronicsScreen} options={{headerShown:true}} />
-
+    <Stack.Screen name='ElectronicsScreen' component={ElectronicsScreen} options={{headerShown:true,title:"Products"}} />
+    <Stack.Screen name='SearchScreen' component={SearchScreen} options={{headerShown:false}} />
+    <Stack.Screen name='MyOrders' component={MyOrders} options={{title:"My Orders",headerShown:true}} />
+    
+    
     <Stack.Screen name='ServiceDashboard' component={ServiceDashboard} options={{headerShown:true,headerTitle:()=> <Box p={4} mt={6}>
             <Input w={320} marginLeft={-10} placeholder='search locations' _focus={{bg:'#FFF'}} 
             InputRightElement={<Pressable>

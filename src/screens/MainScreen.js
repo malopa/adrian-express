@@ -10,6 +10,7 @@ import { ActivityIndicator, Alert, BackHandler, TouchableOpacity, View } from 'r
 import EmptyData from '../components/EmptyData';
 import { FlatListSlider } from 'react-native-flatlist-slider';
 import { StyleSheet } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 
 
 
@@ -122,91 +123,26 @@ export default function MainScreen({navigation}) {
       borderColor='gray.400'>
         <Text>{d.name}</Text>
       </Pressable>
-
 ))}
 </ScrollView>
 
 
-      <Box px={4} mt={4} _text={{fontSize:16,fontWeight:'bold'}}>Sponsored</Box>
-      <HStack flexWrap={'wrap'} >
-    {posts?.data.slice(0,6).map((d,idx)=>(
-        <Pressable key={idx} m={1} shadow={1} w={'31%'} 
-            bg='white' rounded={'md'} p={1}
-            onPress={()=>navigation.navigate("ProductDetails",{title:d.name,id:d._id,img:d?.image[0]})}>
-              <Box alignItems='center'  flex={1} >
-              <Box position={"relative"} py={1}
-              bg="white" borderBottomColor={'orange.300'} >
-                <Box bg='gray.10' rounded='md' w='100%'>
-                  <Image resizeMode='cover'
-                  rounded={'md'} 
-                  source={{uri:d?.image[0]}} 
-                  w={140} alt={''} 
-                  bg='gray.300' h={150} />
-                  <Icon  as={<MaterialIcons name="favorite-border"/>} size={6} 
-                  position={"absolute"} right={10} 
-                  top={10}/>
-              </Box>
-              <Box>
-                <Center>
-                <Text color='blueGray.600' letterSpacing='sm'>{item.name}</Text>
-                <Text fontSize={14} fontWeight='bold'  letterSpacing='sm'>Tzs {parseFloat(d.price).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</Text>
-                </Center>
-              </Box>
-            </Box>
-            </Box>
+      <Pressable px={4} py={2} mt={4} _text={{fontSize:16,fontWeight:'bold'}}
+      onPress={()=>navigation.navigate("ElectronicsScreen",{slug:'ElectronicsScreen'})}
+      >
+        <HStack justifyContent={'space-between'} alignItems='center'>
+        <VStack>
+        <Text fontWeight={'bold'} fontSize={18}>New Arrival</Text>
+        <Text>40+ New product added this week</Text>
+        </VStack>
+
+        <Icon as={<FontAwesome name='long-arrow-right' />} size={8} color='black' />
+
+        </HStack>
         </Pressable>
 
-))}
 
-</HStack>
-
-
-{/* Electronics */}
-
-<Box p={4} bg={'red.100'} mt={4} _text={{fontSize:16}} w='full'>Electronics</Box>
-
-<HStack flexWrap={'wrap'} w='full' justifyContent={'center'}>
-{electronics?.data.slice(0,4).map((d,idx)=>(
-        <Pressable key={idx} m={1} shadow={1} w={'45%'} 
-            bg='white' rounded={'md'} p={1}
-            onPress={()=>navigation.navigate("ProductDetails",{title:d.name,id:d._id,img:d?.image[0]})}>
-              <Box alignItems='center'  flex={1} >
-              <Box position={"relative"} py={1}
-              bg="white" borderBottomColor={'orange.300'} >
-                <Box bg='gray.10' rounded='md' w='100%'>
-                  <Image resizeMode='cover'
-                  rounded={'md'} 
-                  source={{uri:d?.image[0]}} 
-                  w={140} alt={''} 
-                  bg='gray.300' h={150} />
-                  <Icon  as={<MaterialIcons name="favorite-border"/>} size={6} 
-                  position={"absolute"} right={10} 
-                  top={10}/>
-              </Box>
-              <Box>
-                <Center>
-                <Text color='blueGray.600' letterSpacing='sm'>{d.name}</Text>
-                <Text fontSize={14} fontWeight='bold'  letterSpacing='sm'>Tzs {parseFloat(d.price).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</Text>
-                </Center>
-              </Box>
-            </Box>
-            </Box>
-        </Pressable>
-        
-
-
-
-))}
-</HStack>
-
-
-
-
-{/* Laptop and computer */}
-
-<Box p={4} bg={'red.100'} mt={4} _text={{fontSize:16}} w='full'>Computer & Accessories</Box>
-
-<ScrollView  horizontal={true} showsHorizontalScrollIndicator={false}>
+      <ScrollView  horizontal={true} showsHorizontalScrollIndicator={false}>
 {laptops?.data?.map((d,idx)=>(
         <Pressable key={idx} m={1} shadow={1} 
             bg='white' rounded={'md'} p={1}
@@ -241,13 +177,106 @@ export default function MainScreen({navigation}) {
 </ScrollView>
 
 
+
+{/* Electronics */}
+
+<Box p={4} bg={'white'} mt={4} _text={{fontSize:16}} w='full'>
+  <Pressable
+      onPress={()=>navigation.navigate("ElectronicsScreen",{slug:'MobilePhoneAccessories'})}
+  
+  >
+  <HStack justifyContent={'space-between'} alignItems='center'>
+    <VStack w={'50%'}>
+    <Text fontWeight={'bold'} fontSize={18}>Top Ranking</Text>
+    <Text>Over 100+ available</Text>
+    </VStack>
+    <Icon as={<FontAwesome name='long-arrow-right' />} size={8} color='black' />
+  </HStack>
+  </Pressable>
+  </Box>
+
+
+  <ScrollView  horizontal={true} showsHorizontalScrollIndicator={false}>
+{electronics?.data?.map((d,idx)=>(
+        <Pressable key={idx} m={1} shadow={1} 
+            bg='white' rounded={'md'} p={1}
+            onPress={()=>navigation.navigate("ProductDetails",{title:d.name,id:d._id,img:d?.image[0]})}>
+              <Box alignItems='center'  flex={1} >
+              <Box position={"relative"} py={1}
+              bg="white" borderBottomColor={'orange.300'} >
+                <Box bg='gray.10' rounded='md' w='100%'>
+                  <Image resizeMode='cover'
+                  rounded={'md'} 
+                  source={{uri:d?.image[0]}} 
+                  w={140} alt={''} 
+                  bg='gray.300' h={150} />
+                  <Icon  as={<MaterialIcons name="favorite-border"/>} size={6} 
+                  position={"absolute"} right={10} 
+                  top={10}/>
+              </Box>
+              <Box>
+                <Center>
+                <Text color='blueGray.600' letterSpacing='sm'>{d.name}</Text>
+                <Text fontSize={14} fontWeight='bold'  letterSpacing='sm'>Tzs {parseFloat(d.price).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</Text>
+                </Center>
+              </Box>
+            </Box>
+            </Box>
+        </Pressable>
+        
+
+
+
+))}
+</ScrollView>
+
+
+{/* Laptop and computer */}
+
+{/* <Box p={4} bg={'red.100'} mt={4} _text={{fontSize:16}} w='full'>Computer & Accessories</Box> */}
+
+{/* <ScrollView  horizontal={true} showsHorizontalScrollIndicator={false}>
+{laptops?.data?.map((d,idx)=>(
+        <Pressable key={idx} m={1} shadow={1} 
+            bg='white' rounded={'md'} p={1}
+            onPress={()=>navigation.navigate("ProductDetails",{title:d.name,id:d._id,img:d?.image[0]})}>
+              <Box alignItems='center'  flex={1} >
+              <Box position={"relative"} py={1}
+              bg="white" borderBottomColor={'orange.300'} >
+                <Box bg='gray.10' rounded='md' w='100%'>
+                  <Image resizeMode='cover'
+                  rounded={'md'} 
+                  source={{uri:d?.image[0]}} 
+                  w={140} alt={''} 
+                  bg='gray.300' h={150} />
+                  <Icon  as={<MaterialIcons name="favorite-border"/>} size={6} 
+                  position={"absolute"} right={10} 
+                  top={10}/>
+              </Box>
+              <Box>
+                <Center>
+                <Text color='blueGray.600' letterSpacing='sm'>{d.name}</Text>
+                <Text fontSize={14} fontWeight='bold'  letterSpacing='sm'>Tzs {parseFloat(d.price).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</Text>
+                </Center>
+              </Box>
+            </Box>
+            </Box>
+        </Pressable> */}
+        
+
+
+{/* 
+))}
+</ScrollView> */}
+
+
 {/* Mobile & Accessoris */}
 
 
-<Box p={4} bg={'red.100'} mt={4} _text={{fontSize:16}} w='full'>Mobile & Accessoris</Box>
+<Box p={4} bg={'white'} mt={4} _text={{fontSize:16}} w='full'>Just for You</Box>
 
 <HStack flexWrap={'wrap'} w='full' justifyContent={'center'}>
-{mobiles?.data?.slice(0,4).map((d,idx)=>(
+{laptops?.data?.slice(0,10).map((d,idx)=>(
         <Pressable key={idx} m={1} shadow={1} w={'45%'} 
             bg='white' rounded={'md'} p={1}
             onPress={()=>navigation.navigate("ProductDetails",{title:d.name,id:d._id,img:d?.image[0]})}>
@@ -283,7 +312,7 @@ export default function MainScreen({navigation}) {
 
 
 {/* house and real estate */}
-<Box p={4} bg={'red.300'} mt={4} _text={{fontSize:16}} w='full'>House and real Estate</Box>
+{/* <Box p={4} bg={'red.300'} mt={4} _text={{fontSize:16}} w='full'>House and real Estate</Box>
 <ScrollView  horizontal={true} showsHorizontalScrollIndicator={false}>
 {houses?.data?.map((d,idx)=>(
         <Pressable key={idx} m={1} shadow={1} 
@@ -316,10 +345,10 @@ export default function MainScreen({navigation}) {
 
 
 ))}
-</ScrollView>
+</ScrollView> */}
 
 
-<Box p={4} bg={'green.100'} mt={4} _text={{fontSize:16}} w='full'>Clothes & Jewels</Box>
+{/* <Box p={4} bg={'green.100'} mt={4} _text={{fontSize:16}} w='full'>Clothes & Jewels</Box>
 
 <HStack flexWrap={'wrap'} w='full' justifyContent={'center'}>
 {jewels?.data?.slice(0,4).map((d,idx)=>(
@@ -353,7 +382,7 @@ export default function MainScreen({navigation}) {
 
 
 ))}
-</HStack>
+</HStack> */}
 
 
   <Box pb={10} mt={10}></Box>
@@ -440,22 +469,9 @@ export default function MainScreen({navigation}) {
 
   const HeaderTop = ()=>{
         return  <Box mb={10}
+          _text={{fontWeight:'bold',p:4,fontSize:20}}
          >
-
-<FlatListSlider
-        data={promoted?.data}
-        height={240}
-        timer={5000}
-        imageKey={'img'}
-        onPress={item => navigation.navigate("ProductDetails",{title:item.name,id:item._id,img:item.img})}
-
-        contentContainerStyle={{paddingHorizontal: 2}}
-        indicatorContainerStyle={{position:'absolute', bottom: 10}}
-        indicatorActiveColor={'#8e44ad'}
-        indicatorInActiveColor={'#ffffff'}
-        indicatorActiveWidth={30}
-        animation
-      />
+          Welcome
 
     </Box> 
   }

@@ -5,7 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Octicons from 'react-native-vector-icons/Octicons';
 import { Alert, BackHandler, Pressable } from 'react-native';
-import { AntDesign, Entypo } from '@expo/vector-icons';
+import { AntDesign, Entypo, MaterialIcons } from '@expo/vector-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import {useQuery} from 'react-query';
 import {getMyPost} from '../data/api'
@@ -110,7 +110,7 @@ export default function SettingsScreen({navigation}) {
             <Text color="gray.600" fontSize={18}>{user?.user?.busines_name}</Text>
             </Center>
             <Divider _light={{bg:'gray.200'}} mt={8}/>
-            <Pressable onPress={handleMyPost}>
+            <Pressable onPress={()=>navigation.navigate("MyOrders")}>
             <HStack w='full' py={3}  px={1} justifyContent='space-between' 
             alignItems={'center'} >
                 <Box>
@@ -150,6 +150,30 @@ export default function SettingsScreen({navigation}) {
 
             <Divider _light={{bg:'gray.200'}}/>
 
+
+            <Pressable onPress={addProduct}>
+            <HStack w='full' py={3} px={2} 
+            justifyContent='space-between' 
+            alignItems={'center'} >
+                <Box>
+                    
+                <HStack alignItems={'center'}>
+                <Box mr={2} borderColor='yellow.50' alignItems="center" 
+                justifyContent='center' textAlign='center'
+                 borderWidth={2} p={2} rounded="full" > 
+                    <Icon as ={<MaterialIcons name="bookmark-border" />} size={6}/>
+                
+                </Box>
+                    <Text color={"red"} >My Orders</Text>
+                </HStack>
+                </Box>
+                <Icon color='gray.300' as={<FontAwesomeIcon name="angle-right" />} size={6}/>
+            </HStack>
+            </Pressable>
+
+            <Divider _light={{bg:'gray.200'}}/>
+
+
             <HStack w='full' py={3} px={1} justifyContent='space-between' 
             alignItems={'center'} >
                 <Box>
@@ -159,7 +183,7 @@ export default function SettingsScreen({navigation}) {
                     rounded="full" > 
                         <Icon  as ={<AntDesign name="message1" />} size={6}/>
                     </Box>
-                    <Text color={"red"}>Inbox</Text>
+                    <Text color={"red"}>Messages</Text>
                 </HStack>
                 </Box>
                 <Icon color='gray.300' as ={<FontAwesomeIcon name="angle-right" />} size={6}/>
@@ -186,7 +210,7 @@ export default function SettingsScreen({navigation}) {
             <Divider _light={{bg:'gray.200'}}/>
 
 
-            <Pressable onPress={()=>navigation.navigate("RegisterService")}>
+            {/* <Pressable onPress={()=>navigation.navigate("RegisterService")}>
             <HStack w='full' py={2} px={1} justifyContent='space-between' 
             alignItems={'center'} >
                 <Box>
@@ -203,7 +227,7 @@ export default function SettingsScreen({navigation}) {
                 <Icon color='gray.300' as ={<FontAwesomeIcon name="angle-right" />} size={6}/>
             </HStack>
             </Pressable>
-            <Divider _light={{bg:'gray.200'}}/>
+            <Divider _light={{bg:'gray.200'}}/> */}
             
 
             {user?.isLoggedIn?

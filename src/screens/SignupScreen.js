@@ -72,7 +72,7 @@ export default function SignupScreen({navigation}) {
                     rounded='full' 
                     alt='logo' 
                     height={20} 
-                    source={require("../../assets/icon.png")} 
+                    source={require("../../assets/logo.png")} 
                     />  
 
                     <Text p={2}  
@@ -201,7 +201,8 @@ export default function SignupScreen({navigation}) {
 
         <Button m={2} width='94%' 
         onPress={handleSignup} py={4} 
-        rounded='md' bg='amber.600'>REGISTER</Button>
+        bg='#020143'
+        rounded='md' >Sign Up</Button>
 
         <AuthDialog isOpen={isOpen} setIsOpen={setIsOpen} />
         </Center> 
